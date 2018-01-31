@@ -10,7 +10,7 @@ h3_route_name_class = 'feature-overview-card__text_title'
 h4_destinations_class = 'feature-overview-info__paragraph_title'
 
 #import web scraping modules
-import bs4, requests, sys, csv
+import bs4, requests
 
 #download the amtrak routes page
 webpage = requests.get(amtrak_routes_url)
