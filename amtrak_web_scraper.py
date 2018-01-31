@@ -10,7 +10,7 @@ h3_route_name_class = 'feature-overview-card__text_title'
 h4_destinations_class = 'feature-overview-info__paragraph_title'
 
 #import web scraping modules
-import bs4, requests
+import bs4, requests, sys, csv
 
 #download the amtrak routes page
 webpage = requests.get(amtrak_routes_url)
@@ -36,7 +36,7 @@ route_name_list = list(parsed_data.findAll("h3", class_ = h3_route_name_class))
 
 #now print out rhe results
 for route in route_name_list:
-    print('Route: {}'.format(route.text))
+    print('Train: {}'.format(route.text))
     #navigate to <h4> element below current <h3> element
     #and print the list of destination cities
     a_tag = route.parent
@@ -44,7 +44,7 @@ for route in route_name_list:
     sibling2 = sibling1.nextSibling
     h4_div = sibling2.div
     cities = h4_div.h4.get_text()
-    print("\t" + cities)
+    print("\tRoute: " + cities)
 
 
 
